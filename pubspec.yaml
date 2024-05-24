@@ -1,0 +1,33 @@
+name: pokedex
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.4.1 <4.0.0'
+
+dependencies:
+  dio: ^5.4.3+1
+  flutter:
+    sdk: flutter
+  get_it: ^7.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+fonts:
+  - family: Gilroy
+    fonts:
+      - asset: fonts/Gilroy-Bold.ttf
+        weight: 700
+      - asset: fonts/Gilroy-Medium.ttf
+        weight: 500
+      - asset: fonts/Gilroy-Regular.ttf
+        weight: 400
+      - asset: fonts/Gilroy-SemiBold.ttf
+        weight: 600
