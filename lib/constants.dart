@@ -1,0 +1,1 @@
+const int LOAD_ITEM_COUNT = 9;

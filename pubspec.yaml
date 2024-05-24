@@ -10,7 +10,11 @@ dependencies:
   dio: ^5.4.3+1
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.9
   get_it: ^7.7.0
+  injectable: ^2.4.2
+  injectable_generator: ^2.6.1
+  pokeapi: ^1.0.3
 
 dev_dependencies:
   flutter_test:
