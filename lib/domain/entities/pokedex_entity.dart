@@ -1,8 +1,8 @@
-import 'package:pokedex/domain/entities/pokemon_properties_entity.dart';
+import 'package:pokedex/domain/entities/pokemon_entity.dart';
 
 class PokedexEntity {
   int count;
-  List<PokemonPropertiesEntity> results;
+  List<PokemonEntity> results;
   PokedexEntity({
     required this.count,
     required this.results,

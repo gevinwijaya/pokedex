@@ -2,19 +2,21 @@ class PokemonEntity {
   String? id;
   String name;
   List<String>? types;
+  List<String>? moves;
   String? imageUrl;
   AboutEntity? about;
   BaseStatsEntity? baseStats;
-  List<String>? moves;
+  String? color;
 
   PokemonEntity({
     this.id,
     required this.name,
     this.types,
+    this.moves,
     this.imageUrl,
     this.about,
     this.baseStats,
-    this.moves,
+    this.color
   });
 }
 

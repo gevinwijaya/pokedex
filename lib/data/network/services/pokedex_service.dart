@@ -17,7 +17,7 @@ class PokedexService {
     return _dio.get('https://pokeapi.co/api/v2/pokemon/$pokemonId');
   }
 
-  Future<Response<T>> getPokemonDetailThroughurl<T>(String url) {
+  Future<Response<T>> getResponse<T>(String url) {
     return _dio.get(url);
   }
 }

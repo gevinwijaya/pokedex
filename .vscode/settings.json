@@ -1,4 +1,5 @@
 {
     "dart.flutterSdkPath": "C:\\Users\\R Y Z E N\\Downloads\\flutter_pokedex-master\\flutter_pokedex-master\\.fvm\\flutter_sdk",
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.compile.nullAnalysis.mode": "automatic"
 }

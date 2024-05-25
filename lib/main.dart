@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:pokedex/di/di.dart';
 import 'package:pokedex/presentation/views/home.dart';
+import 'package:pokedex/route/application_router.dart';
 
-void main() {
-  runApp(const MainApp());
+void main() async {
+  await configureDependencies();
+  runApp(GlobalBlocProviders(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final ApplicationRouter _applicationRouter = ApplicationRouter();
+
+  MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: 'Gilroy'),
-      home: const HomePage()
-    );
+    return MaterialApp.router(
+        routerConfig: _applicationRouter.config(),
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'CircularStd',
+          textTheme: GoogleFonts.lexendDecaTextTheme(),
+        ));
   }
 }

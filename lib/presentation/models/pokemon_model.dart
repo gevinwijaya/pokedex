@@ -1,10 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:pokedex/presentation/models/about_model.dart';
 import 'package:pokedex/presentation/models/base_stats_model.dart';
 
 class PokemonModel {
   String id;
   String name;
-  String color;
+  Color color;
   List<String> types;
   String imageUrl;
   About about;

@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:pokedex/data/network/responses/pokemon_detail_response.dart';
 import 'package:pokedex/data/network/responses/pokemon_list_response.dart';
+import 'package:pokedex/data/network/responses/pokemon_species_response.dart';
 import 'package:pokedex/data/network/services/pokedex_service.dart';
 
 @singleton
@@ -23,9 +24,15 @@ class PokedexRemoteDataSource {
     return PokemonDetailResponse.fromJson(response.data);
   }
 
-  Future<PokemonDetailResponse> getPokemonDetailThroughUrl(String url) async {
-    var response = await _pokedexService.getPokemonDetail(url);
+  Future<PokemonDetailResponse> getPokemonDetailFromUrl(String url) async {
+    var response = await _pokedexService.getResponse(url);
 
     return PokemonDetailResponse.fromJson(response.data);
+  }
+
+  Future<PokemonSpeciesResponse> getPokemonSpeciesFromUrl(String url) async {
+    var response = await _pokedexService.getResponse(url);
+
+    return PokemonSpeciesResponse.fromJson(response.data);
   }
 }

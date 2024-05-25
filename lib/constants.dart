@@ -1,1 +1,1 @@
-const int LOAD_ITEM_COUNT = 9;
+const int LOAD_ITEM_COUNT = 10;
