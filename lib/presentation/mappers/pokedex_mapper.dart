@@ -34,7 +34,7 @@ extension StringToColor on String {
       case 'black':
         return Colors.black54;
       case 'white':
-        return Colors.yellow.shade50;
+        return Colors.grey;
       case 'red':
         return const Color(0xfffc2847);
       case 'green':
@@ -53,7 +53,7 @@ extension StringToColor on String {
         return Colors.brown;
       case 'grey':
       case 'gray':
-        return Colors.grey;
+        return Colors.black38;
       default:
         return Colors.black54;
     }

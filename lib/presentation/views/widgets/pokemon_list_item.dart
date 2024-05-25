@@ -4,6 +4,9 @@ import 'package:pokedex/presentation/models/pokemon_model.dart';
 
 class PokemonListItem extends StatelessWidget {
   static const double _pokemonFraction = 0.6;
+  static const double _idFraction = 0.1;
+  static const double _titleFraction = 0.6;
+  static const double _typeFraction = 0.2;
 
   final PokemonModel pokemon;
   final void Function()? onPress;
@@ -16,14 +19,16 @@ class PokemonListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return LayoutBuilder(
       builder: (context, constrains) {
         final itemHeight = constrains.maxHeight;
+        final itemWidth = constrains.maxWidth;
 
         return Container(
           decoration: BoxDecoration(
             color: pokemon.color,
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
                 color: pokemon.color.withOpacity(0.4),
@@ -33,7 +38,7 @@ class PokemonListItem extends StatelessWidget {
             ],
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(24),
             child: Material(
               color: pokemon.color,
               child: InkWell(
@@ -43,8 +48,8 @@ class PokemonListItem extends StatelessWidget {
                 child: Stack(
                   children: [
                     _buildPokemon(height: itemHeight),
-                    _buildPokemonNumber(),
-                    _CardContent(pokemon),
+                    _buildPokemonNumber(width: itemWidth),
+                    _CardContent(pokemon, itemWidth),
                   ],
                 ),
               ),
@@ -72,16 +77,19 @@ class PokemonListItem extends StatelessWidget {
     );
   }
 
-  Widget _buildPokemonNumber() {
+  Widget _buildPokemonNumber({required double width}) {
+    final size = width * _idFraction;
     return Positioned(
       top: 10,
       right: 14,
-      child: Text(
-        pokemon.id,
-        style: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.bold,
-          color: Colors.black26,
+      child: FittedBox(
+        child: Text(
+          pokemon.id,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            color: Colors.black26,
+          ),
         ),
       ),
     );
@@ -90,37 +98,27 @@ class PokemonListItem extends StatelessWidget {
 
 class _CardContent extends StatelessWidget {
   final PokemonModel pokemon;
+  final double width;
 
-  const _CardContent(this.pokemon);
+  const _CardContent(this.pokemon, this.width);
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTextStyle(
-      style: const TextStyle(
-        color: Colors.white,
-        fontWeight: FontWeight.bold
-      ),
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Hero(
-                tag: pokemon.id + pokemon.name,
-                child: Text(
-                  pokemon.name,
-                  style: const TextStyle(
-                    fontSize: 20
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              ..._buildTypes(context),
-            ],
-          ),
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Text(
+              pokemon.name,
+              style: const TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            ..._buildTypes(context),
+          ],
         ),
       ),
     );
@@ -155,4 +153,3 @@ Widget _typeTag(String type) {
     ),
   );
 }
-

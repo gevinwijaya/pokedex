@@ -17,12 +17,14 @@ class BaseStatsTab extends StatelessWidget {
       'Sp. Atk': baseStats.spatk,
       'Sp. Def': baseStats.spdef,
     };
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: stats.entries
-            .map((entry) => StatBar(statName: entry.key, statValue: entry.value))
-            .toList(),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: stats.entries
+              .map((entry) => StatBar(statName: entry.key, statValue: entry.value))
+              .toList(),
+        ),
       ),
     );
   }

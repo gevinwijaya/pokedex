@@ -66,10 +66,18 @@ class PokemonDetailPage extends StatelessWidget {
                       BorderRadius.vertical(top: Radius.circular(30.0)),
                     ),
                   ),
-                  SvgPicture.network(
-                    pokemon.imageUrl,
-                    height: 150.0,
-                    width: 150.0,
+                  OrientationBuilder(
+                    builder: (context, orientation) {
+                      if (orientation == Orientation.portrait) {
+                        return SvgPicture.network(
+                          pokemon.imageUrl,
+                          height: 150.0,
+                          width: 150.0,
+                        );
+                      } else {
+                        return Container();
+                      }
+                    },
                   ),
                 ],
               ),

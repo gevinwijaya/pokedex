@@ -73,11 +73,11 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   GridView.builder(
                     controller: _scrollController,
-                    padding: const EdgeInsets.all(24.0),
+                    padding: const EdgeInsets.all(20.0),
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      mainAxisSpacing: 20.0,
-                      crossAxisSpacing: 20.0,
+                      mainAxisSpacing: 16.0,
+                      crossAxisSpacing: 16.0,
                       childAspectRatio: 1.3,
                     ),
                     itemCount: state.items.length +

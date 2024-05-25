@@ -11,16 +11,18 @@ class AboutTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _infoRow('Species', about.species),
-          _infoRow('Height', about.height),
-          _infoRow('Weight', about.weight),
-          _infoRow('Abilities', about.abilities),
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _infoRow('Species', about.species),
+            _infoRow('Height', about.height),
+            _infoRow('Weight', about.weight),
+            _infoRow('Abilities', about.abilities),
+          ],
+        ),
       ),
     );
   }
