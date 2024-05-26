@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/presentation/models/about_model.dart';
-import 'package:pokedex/presentation/models/pokemon_model.dart';
 
 class AboutTab extends StatelessWidget {
 

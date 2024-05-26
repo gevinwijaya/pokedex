@@ -15,6 +15,6 @@ class GetPokemonListUseCase extends UseCase<PokedexEntity, int> {
 
   @override
   Future<PokedexEntity> call(int params) {
-    return _pokedexRepository.getPokemonList(params, params + LOAD_ITEM_COUNT);
+    return _pokedexRepository.getPokemonList(params, params + loadItemCount);
   }
 }

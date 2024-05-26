@@ -28,7 +28,7 @@ class PokedexBloc extends Bloc<PokedexEvent, PokedexState> {
       emit(state.copyWith(uiState: UiState.loading));
 
       final response = await getPokemonListUseCase.call(currentIndex);
-      currentIndex += LOAD_ITEM_COUNT;
+      currentIndex += loadItemCount;
       maxIndex = response.count;
       List<PokemonModel> pokemonList =
           response.results.map((pokemon) => pokemon.toModel()).toList();
@@ -49,7 +49,7 @@ class PokedexBloc extends Bloc<PokedexEvent, PokedexState> {
 
       currentIndex = 0;
       final response = await getPokemonListUseCase.call(currentIndex);
-      currentIndex += LOAD_ITEM_COUNT;
+      currentIndex += loadItemCount;
       maxIndex = response.count;
       List<PokemonModel> pokemonList =
           response.results.map((pokemon) => pokemon.toModel()).toList();
