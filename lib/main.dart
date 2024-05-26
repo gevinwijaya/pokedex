@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pokedex/di/di.dart';
-import 'package:pokedex/presentation/views/home.dart';
 import 'package:pokedex/route/application_router.dart';
 
 void main() async {
