@@ -20,7 +20,6 @@ class MainApp extends StatelessWidget {
         routerConfig: _applicationRouter.config(),
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          fontFamily: 'CircularStd',
           textTheme: GoogleFonts.lexendDecaTextTheme(),
         ));
   }
