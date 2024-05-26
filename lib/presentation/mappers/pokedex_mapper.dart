@@ -38,7 +38,7 @@ extension StringToColor on String {
       case 'red':
         return const Color(0xfffc2847);
       case 'green':
-        return const Color(0xff71bc78);
+        return Colors.teal;
       case 'blue':
         return const Color(0xff0f4c81);
       case 'yellow':

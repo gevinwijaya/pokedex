@@ -15,9 +15,9 @@ class PokedexLoader extends StatelessWidget {
           boxShadow: [
             BoxShadow(
                 offset: Offset(0,0),
-                blurRadius: 2,
-                spreadRadius: 2,
-                color: Colors.black26
+                blurRadius: 16,
+                spreadRadius: 4,
+                color: Colors.black12
             )
           ]
       ),

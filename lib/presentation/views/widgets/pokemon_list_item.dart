@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:pokedex/presentation/models/pokemon_model.dart';
 
 class PokemonListItem extends StatelessWidget {
@@ -69,7 +70,7 @@ class PokemonListItem extends StatelessWidget {
         pokemon.imageUrl,
         placeholderBuilder: (BuildContext context) => Container(
             padding: const EdgeInsets.all(30.0),
-            child: const CircularProgressIndicator()),
+            child: LoadingAnimationWidget.twoRotatingArc(color: Colors.white, size: 30.0)),
       ),
     );
   }

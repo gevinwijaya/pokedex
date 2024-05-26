@@ -47,6 +47,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+            scrolledUnderElevation: 0.0,
+            toolbarHeight: 60.0,
             title: const Text(
               'Pokedex',
               style: TextStyle(
