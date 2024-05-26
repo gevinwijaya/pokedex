@@ -4,9 +4,6 @@ import 'package:pokedex/presentation/models/pokemon_model.dart';
 
 class PokemonListItem extends StatelessWidget {
   static const double _pokemonFraction = 0.6;
-  static const double _idFraction = 0.1;
-  static const double _titleFraction = 0.6;
-  static const double _typeFraction = 0.2;
 
   final PokemonModel pokemon;
   final void Function()? onPress;
@@ -78,7 +75,6 @@ class PokemonListItem extends StatelessWidget {
   }
 
   Widget _buildPokemonNumber({required double width}) {
-    final size = width * _idFraction;
     return Positioned(
       top: 10,
       right: 14,

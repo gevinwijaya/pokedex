@@ -55,58 +55,64 @@ class _HomePageState extends State<HomePage> {
             ),
             backgroundColor: Colors.white,
             elevation: 0.0),
-        body: BlocBuilder<PokedexBloc, PokedexState>(
-          builder: (context, state) {
-            if (state.uiState == UiState.loading && state.items.isEmpty) {
-              return const Center(child: CircularProgressIndicator());
-            }
+        body: OrientationBuilder(
+          builder: (context, orientation) {
+            return BlocBuilder<PokedexBloc, PokedexState>(
+              builder: (context, state) {
+                if (state.uiState == UiState.loading && state.items.isEmpty) {
+                  return const Center(child: CircularProgressIndicator());
+                }
 
-            if (state.uiState == UiState.failure) {
-              return Center(child: Text('Error: ${state.error}'));
-            }
+                if (state.uiState == UiState.failure) {
+                  return Center(child: Text('Error: ${state.error}'));
+                }
 
-            return RefreshIndicator(
-              onRefresh: () async {
-                _pokedexBloc.add(RefreshItems());
-              },
-              child: Stack(
-                children: [
-                  GridView.builder(
-                    controller: _scrollController,
-                    padding: const EdgeInsets.all(20.0),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 16.0,
-                      crossAxisSpacing: 16.0,
-                      childAspectRatio: 1.3,
-                    ),
-                    itemCount: state.items.length +
-                        (state.uiState == UiState.loading ? 1 : 0),
-                    itemBuilder: (context, index) {
-                      if (index < state.items.length) {
-                        return PokemonListItem(
-                          state.items[index],
-                          onPress: () => _onItemPress(state.items[index]),
-                        );
-                      }
-                      return null;
+                int crossAxisCount = orientation == Orientation.portrait ? 2 : 3;
+
+                return RefreshIndicator(
+                    onRefresh: () async {
+                      _pokedexBloc.add(RefreshItems());
                     },
-                  ),
-                  if (state.uiState == UiState.loading && state.items.isNotEmpty)
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      child: Container(
-                        padding: const EdgeInsets.all(16.0),
-                        color: Colors.transparent,
-                        child: const Center(
-                          child: CircularProgressIndicator(),
+                    child: Stack(
+                      children: [
+                        GridView.builder(
+                          controller: _scrollController,
+                          padding: const EdgeInsets.all(20.0),
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: crossAxisCount,
+                            mainAxisSpacing: 16.0,
+                            crossAxisSpacing: 16.0,
+                            childAspectRatio: 1.3,
+                          ),
+                          itemCount: state.items.length +
+                              (state.uiState == UiState.loading ? 1 : 0),
+                          itemBuilder: (context, index) {
+                            if (index < state.items.length) {
+                              return PokemonListItem(
+                                state.items[index],
+                                onPress: () => _onItemPress(state.items[index]),
+                              );
+                            }
+                            return null;
+                          },
                         ),
-                      ),
-                    ),
-                ],
-              )
+                        if (state.uiState == UiState.loading && state.items.isNotEmpty)
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            child: Container(
+                              padding: const EdgeInsets.all(16.0),
+                              color: Colors.transparent,
+                              child: const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                            ),
+                          ),
+                      ],
+                    )
+                );
+              },
             );
           },
         ));

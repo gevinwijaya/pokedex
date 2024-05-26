@@ -34,7 +34,7 @@ class StatBar extends StatelessWidget {
   final String statName;
   final int statValue;
 
-  StatBar({super.key, required this.statName, required this.statValue});
+  const StatBar({super.key, required this.statName, required this.statValue});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class StatBar extends StatelessWidget {
               height: 10,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
-                color: statValue < 100 ? Colors.red : Colors.green,
+                color: statValue < 100 ? Colors.grey.shade300 : Colors.green,
               ),
               child: FractionallySizedBox(
                 widthFactor: statValue / 100,
@@ -70,7 +70,7 @@ class StatBar extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    color: Colors.green,
+                    color: statValue < 50 ? Colors.red : Colors.green,
                   ),
                 ),
               ),
