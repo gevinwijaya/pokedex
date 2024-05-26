@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:pokedex/core/ui_state.dart';
 import 'package:pokedex/presentation/models/pokemon_model.dart';
 import 'package:pokedex/presentation/states/pokedex_bloc.dart';
 import 'package:pokedex/presentation/states/pokedex_event.dart';
 import 'package:pokedex/presentation/states/pokedex_state.dart';
+import 'package:pokedex/presentation/views/widgets/pokedex_loader.dart';
 import 'package:pokedex/presentation/views/widgets/pokemon_list_item.dart';
 import 'package:pokedex/route/application_router.gr.dart';
 
@@ -60,14 +62,16 @@ class _HomePageState extends State<HomePage> {
             return BlocBuilder<PokedexBloc, PokedexState>(
               builder: (context, state) {
                 if (state.uiState == UiState.loading && state.items.isEmpty) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(
+                      child: PokedexLoader());
                 }
 
                 if (state.uiState == UiState.failure) {
                   return Center(child: Text('Error: ${state.error}'));
                 }
 
-                int crossAxisCount = orientation == Orientation.portrait ? 2 : 3;
+                int crossAxisCount =
+                    orientation == Orientation.portrait ? 2 : 3;
 
                 return RefreshIndicator(
                     onRefresh: () async {
@@ -78,7 +82,8 @@ class _HomePageState extends State<HomePage> {
                         GridView.builder(
                           controller: _scrollController,
                           padding: const EdgeInsets.all(20.0),
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: crossAxisCount,
                             mainAxisSpacing: 16.0,
                             crossAxisSpacing: 16.0,
@@ -96,7 +101,8 @@ class _HomePageState extends State<HomePage> {
                             return null;
                           },
                         ),
-                        if (state.uiState == UiState.loading && state.items.isNotEmpty)
+                        if (state.uiState == UiState.loading &&
+                            state.items.isNotEmpty)
                           Positioned(
                             left: 0,
                             right: 0,
@@ -105,13 +111,12 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(16.0),
                               color: Colors.transparent,
                               child: const Center(
-                                child: CircularProgressIndicator(),
+                                child: PokedexLoader(),
                               ),
                             ),
                           ),
                       ],
-                    )
-                );
+                    ));
               },
             );
           },

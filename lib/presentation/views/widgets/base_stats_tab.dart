@@ -38,6 +38,7 @@ class StatBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int checkedStatValue = statValue > 100 ? 100 : statValue;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
@@ -65,7 +66,7 @@ class StatBar extends StatelessWidget {
                 color: statValue < 100 ? Colors.grey.shade300 : Colors.green,
               ),
               child: FractionallySizedBox(
-                widthFactor: statValue / 100,
+                widthFactor: checkedStatValue / 100,
                 alignment: Alignment.centerLeft,
                 child: Container(
                   decoration: BoxDecoration(

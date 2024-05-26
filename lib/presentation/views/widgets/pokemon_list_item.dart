@@ -28,9 +28,9 @@ class PokemonListItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
               BoxShadow(
-                color: pokemon.color.withOpacity(0.4),
-                blurRadius: 15,
-                offset: const Offset(0, 8),
+                color: pokemon.color.withOpacity(0.2),
+                blurRadius: 16,
+                offset: const Offset(0, 0),
               ),
             ],
           ),

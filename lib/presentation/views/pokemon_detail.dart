@@ -170,7 +170,7 @@ List<Widget> _getHeader(PokemonModel pokemon, Orientation orientation) {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: _getTags(pokemon.types),
                     ),
-                    const SizedBox(height: 16.0),
+                    const SizedBox(height: 24.0),
                   ],
                 ),
                 const Spacer(),
