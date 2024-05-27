@@ -24,9 +24,18 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    super.initState();
     _pokedexBloc = BlocProvider.of<PokedexBloc>(context);
     _scrollController.addListener(_onScroll);
-    super.initState();
+  }
+
+  void _checkContentHeight() {
+    if (_scrollController.position.maxScrollExtent <=
+        _scrollController.position.viewportDimension &&
+        _pokedexBloc.state.uiState != UiState.loading &&
+        !_pokedexBloc.state.hasReachedMax) {
+      _pokedexBloc.add(FetchItems());
+    }
   }
 
   void _onScroll() {
@@ -62,6 +71,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context, orientation) {
             return BlocBuilder<PokedexBloc, PokedexState>(
               builder: (context, state) {
+                WidgetsBinding.instance.addPostFrameCallback((_) => _checkContentHeight());
                 if (state.uiState == UiState.loading && state.items.isEmpty) {
                   return const Center(
                       child: PokedexLoader());
@@ -81,6 +91,7 @@ class _HomePageState extends State<HomePage> {
                     child: Stack(
                       children: [
                         GridView.builder(
+                          physics: const AlwaysScrollableScrollPhysics(),
                           controller: _scrollController,
                           padding: const EdgeInsets.all(20.0),
                           gridDelegate:
